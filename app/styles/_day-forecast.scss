@@ -1,0 +1,25 @@
+.day-card {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  img {
+    width: 17vw;
+  }
+
+  .date {
+    font-weight: 600;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .min {
+    color: #6d6d6d;
+  }
+
+  .description {
+    font-weight: 200;
+  }
+
+}
