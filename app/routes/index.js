@@ -6,8 +6,6 @@ import { inject as service } from '@ember/service';
 export default class IndexRoute extends Route {
   @service store;
   async model() {
-    let data = await this.store.findAll('daily-forecast');
-    console.log(data.content[0]);
-    return data;
+    return this.store.findAll('daily-forecast');
   }
 }

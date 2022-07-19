@@ -8,7 +8,11 @@ export default class DailyForecastSerializer extends JSONAPISerializer {
           id: info.EpochDate,
           type: 'daily-forecast',
           attributes: {
-            try: 'oren',
+            date: info.EpochDate,
+            minTemperature: info.Temperature.Minimum.Value,
+            maxTemperature: info.Temperature.Maximum.Value,
+            description: info.Day.IconPhrase,
+            iconId: info.Day.Icon,
           },
         };
       }),

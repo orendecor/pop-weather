@@ -1,9 +1,9 @@
-<li>
-  <img alt="ssss" />
-  <span class="date">{{timestamp-to-date @day.id}}</span>
+<li class="day-card">
+  <span class="date">{{timestamp-to-date @day.date}}</span>
+  <img alt="{{@day.description}}" src="/assets/images/weather-icons/{{@day.iconId}}.svg" />
   <div class="temperature">
-    <span class="max">36</span>
-    <span class="min">22</span>
+    <span class="max">{{fahrenheit-to-celsius @day.maxTemperature}}°</span>
+    <span class="min">{{fahrenheit-to-celsius @day.minTemperature}}°</span>
   </div>
-  <span class="description">overcast clouds</span>
+  <span class="description">{{@day.description}}</span>
 </li>
