@@ -1,9 +1,7 @@
-{{page-title "Index"}}
-<SearchBar />
-
-<ul class="forecast">
-{{#each @model as |day|}}
+{{page-title "Weather Forecast"}}
+{{#each @model.data as |day|}}
   <DayForecast @day={{day}} />
-
 {{/each}}
-</ul>
+{{#if @model.error}}
+  <p>{{@model.error}}</p>
+{{/if}}
