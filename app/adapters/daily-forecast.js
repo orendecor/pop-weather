@@ -1,12 +1,9 @@
-import RESTAdapter from '@ember-data/adapter/rest';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
 
-export default class DailyForecastAdapter extends RESTAdapter {
-  // host = 'http://dataservice.accuweather.com';
-  // namespace = 'forecasts/v1/daily/5day';
-  // pathForType() {
-  //   return '215854?apikey=wrAzRR71G3kXx3oFS6nwDgtl0Iyhdx1A';
-  // }
-  urlForFindAll(modelName,snapshot) {
-    return 'test.json';
+export default class DailyForecastAdapter extends JSONAPIAdapter {
+  host = 'http://dataservice.accuweather.com';
+  namespace = 'forecasts/v1/daily/5day';
+  pathForType() {
+    return '215854?apikey=wrAzRR71G3kXx3oFS6nwDgtl0Iyhdx1A';
   }
 }
