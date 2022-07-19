@@ -1,14 +1,12 @@
 import Route from '@ember/routing/route';
-import fetch from 'fetch';
+import { inject as service } from '@ember/service';
+
+// import fetch from 'fetch';
 
 export default class IndexRoute extends Route {
+  @service store;
   async model() {
-    const API_KEY = 'wrAzRR71G3kXx3oFS6nwDgtl0Iyhdx1A';
-    const response = await fetch(
-      `http://dataservice.accuweather.com/forecasts/v1/daily/5day/215854?apikey=${API_KEY}`
-    );
-    const { DailyForecasts } = await response.json();
-
-    return DailyForecasts;
+    let data = await this.store.findAll('daily-forecast');
+    return data;
   }
 }
