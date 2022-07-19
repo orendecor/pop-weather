@@ -1,0 +1,5 @@
+{{page-title "Index"}}
+{{#each @model as |day|}}
+  <DayForecast @date={{day.EpochDate}} />
+
+{{/each}}
