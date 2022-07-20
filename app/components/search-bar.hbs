@@ -1,4 +1,6 @@
 <div class="search-bar">
-  <label>Location: <input type="text" {{on "keyup" this.onKeyUp}} {{on "keydown" this.onKeyDown}} /></label>
+  <label>Location:
+    <Input @value={{this.locationId}} {{on "keyup" this.onKeyUp}} />
+  </label>
   <button type="button" {{on "click" this.searchLocation}}>Search</button>
 </div>
