@@ -1,12 +1,11 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
-
+import ENV from '../config/environment';
 export default class DailyForecastAdapter extends JSONAPIAdapter {
   host = '//dataservice.accuweather.com';
   namespace = 'forecasts/v1/daily/5day';
   query(store, type, query, recordArray, adapterOptions) {
     const params = {
-      // TODO: add the apiKey through the env config file
-      apikey: 'oqBVZqzF5XBY47dh3bQ7xnQMQ7AyLWyL',
+      apikey: encodeURIComponent(ENV.ACCUWEATHER_APIKEY),
     };
     return this.ajax(this.buildURL(query), 'GET', { data: params });
   }
