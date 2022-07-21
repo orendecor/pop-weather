@@ -18,7 +18,7 @@ export default class SearchBarComponent extends Component {
 
   @action
   searchLocation() {
-    // window.location.href = `/${this.locationId.get}`;
+    // window.location.href = `/${this.locationId}`;
     this.router.transitionTo(`/${this.locationId}`);
   }
 
