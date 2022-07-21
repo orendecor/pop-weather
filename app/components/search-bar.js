@@ -20,4 +20,34 @@ export default class SearchBarComponent extends Component {
     // window.location.href = `/${this.locationId.get}`;
     this.router.transitionTo(`/${this.locationId}`);
   }
+
+  @action
+  onlyIntegerValidator(e) {
+    const input = e.target;
+    const errMsg = 'Must be an integer';
+    const inputFilter = function (value) {
+      return /^-?\d*$/.test(value);
+    };
+    if (inputFilter(input.value)) {
+      // Accepted value
+
+      if (['keydown', 'mousedown', 'focusout'].indexOf(e.type) >= 0) {
+        input.classList.remove('input-error');
+        input.setCustomValidity('');
+      }
+      input.oldValue = input.value;
+      input.oldSelectionStart = input.selectionStart;
+      input.oldSelectionEnd = input.selectionEnd;
+    } else if (Object.prototype.hasOwnProperty.call(input, 'oldValue')) {
+      // Rejected value - restore the previous one
+      input.classList.add('input-error');
+      input.setCustomValidity(errMsg);
+      input.reportValidity();
+      input.value = input.oldValue;
+      input.setSelectionRange(input.oldSelectionStart, input.oldSelectionEnd);
+    } else {
+      // Rejected value - nothing to restore
+      input.value = '';
+    }
+  }
 }

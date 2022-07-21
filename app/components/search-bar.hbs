@@ -1,6 +1,17 @@
 <div class="search-bar">
   <label>Location:
-    <Input @value={{this.locationId}} {{on "keyup" this.onKeyUp}} />
+    <Input @value={{this.locationId}} {{on "keyup" this.onKeyUp}}
+      {{on "input" this.onlyIntegerValidator}}
+      {{on "keydown" this.onlyIntegerValidator}}
+      {{on "keyup" this.onlyIntegerValidator}}
+      {{on "mousedown" this.onlyIntegerValidator}}
+      {{on "mouseup" this.onlyIntegerValidator}}
+      {{on "select" this.onlyIntegerValidator}}
+      {{on "change" this.onlyIntegerValidator}}
+      {{on "contextmenu" this.onlyIntegerValidator}}
+      {{on "drop" this.onlyIntegerValidator}}
+      {{on "focusout" this.onlyIntegerValidator}}
+    />
   </label>
   <button type="button" {{on "click" this.searchLocation}}>Search</button>
 </div>
