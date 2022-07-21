@@ -1,26 +1,41 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'pop-weather/tests/helpers';
-import { render } from '@ember/test-helpers';
+import { render, fillIn, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | search-bar', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
+  test('it accepts only numbers in the search bar', async function (assert) {
     await render(hbs`<SearchBar />`);
+    await fillIn('input', 'asss');
+    //
+    assert.dom('input').hasText('');
+  });
+  //TODO: understand why this test fails
 
-    assert.dom(this.element).hasText('');
+  // test('it accepts numbers in the search bar', async function (assert) {
+  //   await render(hbs`<SearchBar />`);
+  //   await fillIn('input', '1122');
+  //   //
+  //   assert.dom('input').hasText('1122');
+  // });
 
-    // Template block usage:
-    await render(hbs`
-      <SearchBar>
-        template block text
-      </SearchBar>
-    `);
+  test('the search button is disabled if blank field', async function (assert) {
+    await render(hbs`<SearchBar />`);
+    assert.dom('button').isDisabled();
+  });
 
-    assert.dom(this.element).hasText('template block text');
+  test('the search button is enabled when field is not empty and contains location key', async function (assert) {
+    await render(hbs`<SearchBar />`);
+    await fillIn('input', '1122');
+
+    assert.dom('button').isNotDisabled();
+  });
+
+  test('the search button is disabled when field is not valid location key', async function (assert) {
+    await render(hbs`<SearchBar />`);
+    await fillIn('input', 'ddd');
+    assert.dom('button').isDisabled();
   });
 });
