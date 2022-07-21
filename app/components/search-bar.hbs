@@ -13,5 +13,5 @@
       {{on "focusout" this.onlyIntegerValidator}}
     />
   </label>
-  <button type="button" {{on "click" this.searchLocation}}>Search</button>
+  <button type="button" {{on "click" this.searchLocation}} disabled={{this.isDisabled}}>Search</button>
 </div>

@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 export default class SearchBarComponent extends Component {
   @tracked locationId = '';
+  @tracked isDisabled = true;
   @service router;
 
   @action
@@ -38,6 +39,11 @@ export default class SearchBarComponent extends Component {
       input.oldValue = input.value;
       input.oldSelectionStart = input.selectionStart;
       input.oldSelectionEnd = input.selectionEnd;
+      if (input.value !== '') {
+        this.isDisabled = false;
+      } else {
+        this.isDisabled = true;
+      }
     } else if (Object.prototype.hasOwnProperty.call(input, 'oldValue')) {
       // Rejected value - restore the previous one
       input.classList.add('input-error');
