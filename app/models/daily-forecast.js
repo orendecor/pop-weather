@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class DailyForecastModel extends Model {
   @attr('number') date;
@@ -6,4 +6,5 @@ export default class DailyForecastModel extends Model {
   @attr('string') minTemperature;
   @attr('string') description;
   @attr('string') iconId;
+  @belongsTo('city') city;
 }

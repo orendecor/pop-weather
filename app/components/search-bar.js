@@ -4,12 +4,18 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
 export default class SearchBarComponent extends Component {
-  @tracked locationId = '';
+  @tracked cityName = '';
   @tracked isDisabled = true;
   @service router;
 
   @action
   onKeyUp(event) {
+    if (event.target.value !== '') {
+      this.isDisabled = false;
+    } else {
+      this.isDisabled = true;
+    }
+
     const ENTER_KEY_CODE = 13;
     if (event.keyCode === ENTER_KEY_CODE) {
       this.searchLocation();
@@ -18,42 +24,6 @@ export default class SearchBarComponent extends Component {
 
   @action
   searchLocation() {
-    // window.location.href = `/${this.locationId}`;
-    this.router.transitionTo(`/${this.locationId}`);
-  }
-
-  @action
-  onlyIntegerValidator(e) {
-    const input = e.target;
-    const errMsg = 'Must be an integer';
-    const inputFilter = function (value) {
-      return /^-?\d*$/.test(value);
-    };
-    if (inputFilter(input.value)) {
-      // Accepted value
-
-      if (['keydown', 'mousedown', 'focusout'].indexOf(e.type) >= 0) {
-        input.classList.remove('input-error');
-        input.setCustomValidity('');
-      }
-      input.oldValue = input.value;
-      input.oldSelectionStart = input.selectionStart;
-      input.oldSelectionEnd = input.selectionEnd;
-      if (input.value !== '') {
-        this.isDisabled = false;
-      } else {
-        this.isDisabled = true;
-      }
-    } else if (Object.prototype.hasOwnProperty.call(input, 'oldValue')) {
-      // Rejected value - restore the previous one
-      input.classList.add('input-error');
-      input.setCustomValidity(errMsg);
-      input.reportValidity();
-      input.value = input.oldValue;
-      input.setSelectionRange(input.oldSelectionStart, input.oldSelectionEnd);
-    } else {
-      // Rejected value - nothing to restore
-      input.value = '';
-    }
+    this.router.transitionTo('city', this.cityName);
   }
 }
