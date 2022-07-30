@@ -6,7 +6,6 @@ import { inject as service } from '@ember/service';
 export default class CityRoute extends Route {
   @service store;
   async model(params) {
-    console.log(params);
     try {
       const city = await this.store.queryRecord(
         'city',

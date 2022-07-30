@@ -1,6 +1,4 @@
 {{page-title "Weather Forecast"}}
-{{@model.city.name}} - {{@model.city.id}}
-<br />
 {{#each @model.dailyForecasts as |day|}}
   <DayForecast @day={{day}} />
 {{/each}}
