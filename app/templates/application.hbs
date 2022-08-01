@@ -1,4 +1,2 @@
-<SearchBar />
-<ul class="forecast">
-{{outlet}}
-</ul>
+<SearchBar @cityName={{this.cityName }} @setCityName={{this.setCityName}} />
+<Forecast @cityName={{this.cityName }} />

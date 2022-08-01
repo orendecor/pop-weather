@@ -1,0 +1,10 @@
+<ul class="forecast">
+  {{#if this.dailyForecastPromise.isFulfilled}}
+    Views: {{this.dailyForecasts}}
+  {{else}}
+    Fetching city...
+  {{/if}}
+  {{#if @model.error}}
+    <p>{{@model.error}}</p>
+  {{/if}}
+</ul>

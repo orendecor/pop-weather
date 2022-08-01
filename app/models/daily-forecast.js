@@ -6,5 +6,5 @@ export default class DailyForecastModel extends Model {
   @attr('string') minTemperature;
   @attr('string') description;
   @attr('string') iconId;
-  @belongsTo('city') city;
+  // @belongsTo('city') city;
 }

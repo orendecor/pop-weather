@@ -1,6 +1,6 @@
 <div class="search-bar">
   <label>City Name:
-    <Input @value={{this.cityName}} {{on "keyup" this.onKeyUp}}  />
+    <Input @value={{this.inputCityName}} {{on "keyup" this.onKeyUp}}  />
   </label>
   <button type="button" {{on "click" this.searchLocation}} disabled={{this.isDisabled}}>Search</button>
 </div>
