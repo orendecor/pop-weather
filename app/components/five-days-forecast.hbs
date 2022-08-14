@@ -1,0 +1,15 @@
+<ul class="forecast">
+ {{#if this.dailyForecastPromise.isFulfilled}}
+   {{#each this.dailyForecastPromise as |day|}}
+     <DayForecast @day={{day}} />
+    {{/each}}
+ {{else}}
+   Fetching stats...
+ {{/if}}
+   {{#if @model.error}}
+     <p>{{@model.error}}</p>
+   {{/if}}
+ </ul>
+<ul class="forecast">
+
+</ul>

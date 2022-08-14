@@ -1,0 +1,11 @@
+<h1>Weather for {{@cityName}}</h1>
+<ul class="forecast">
+  {{#if this.cityPromise.isFulfilled}}
+    <FiveDaysForecast @cityId={{this.cityPromise.id}} />
+  {{else}}
+    Fetching city...
+  {{/if}}
+  {{#if @model.error}}
+    <p>{{@model.error}}</p>
+  {{/if}}
+</ul>
